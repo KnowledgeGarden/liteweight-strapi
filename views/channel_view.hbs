@@ -1,0 +1,36 @@
+<div class="home col-xs-12 ">
+    <div class="row">
+        <table class="channels" border="1" >
+            <tr>
+                <td class="channelleft" style="width:220px;  ">
+                    {{#if isAuthenticated}}
+                    <h4 style="margin-left:10px;">Channels
+                    <a title="Add Channel" href="/channels/new" style="padding-left:80px;"><b>+</b></a>
+                    </h4>
+                    {{else}}
+                    <h4 style="margin-left:10px;">Channels</h4>
+                    {{/if}}
+                    {{#each channellist}}
+                        <a style="margin-left:10px;"href="/channels/{{id}}">{{statement}}</a><br/>
+                    {{/each}}
+                    {{#if isAuthenticated}}
+                        <h4 style="margin-left:10px;">Participants</h4>
+                        {{#each userlist}}
+                            <a style="margin-left:10px;"href="/users/{{id}}">{{statement}}</a><br/>
+                        {{/each}}
+                    {{/if}}
+                    
+                </td>
+                <td class="channelright">
+                    {{#each journallist}}
+                        {{#if isProCon}}
+                            <a href="/procon/{{id}}"><img style="margin-right: 4px;" src="{{img}}">{{statement}}</a><br/>
+                        {{else}}
+                            <a href="/journal/{{id}}"><img style="margin-right: 4px;" src="{{img}}">{{statement}}</a><br/>
+                        {{/if}}
+                    {{/each}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

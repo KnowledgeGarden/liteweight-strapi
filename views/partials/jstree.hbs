@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/style.min.css" />
+<!--<div id="topbox">
+    <div style="margin-left: 10px;"> -->
+        <div id="ajax"></div>
+   <!-- </div>
+</div>-->
+<script src="/js/jstree.min.js"></script>
+<script>
+    window.onload = function() {
+        $('#ajax').jstree({
+            'core' : {
+                'data' : {
+                    "url" : "/conversation/ajaxtree",
+                    "dataType" : "json" 
+                }
+            }
+        });   
+    };
+    $('#ajax')
+		.on("select_node.jstree", function (e, data) {
+            //https://groups.google.com/forum/#!topic/jstree/1j47o8s-tc8
+            var node = selectedNode= $('#ajax').jstree(true).get_selected(true);
+            node = node[0];
+            var selectedId = node.id;
+            
+            window.location.href = "/grab/"+selectedId;
+		});
+</script>
